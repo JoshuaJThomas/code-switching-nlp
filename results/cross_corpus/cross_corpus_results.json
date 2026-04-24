@@ -1,0 +1,113 @@
+{
+  "description": "Cross-corpus Macro-F1 for baseline models on three sentiment corpora.",
+  "corpora": {
+    "mesocsentiment": {
+      "language": "MY-EN",
+      "n_test": 1700,
+      "description": "Primary benchmark",
+      "n_test_note": "VADER/TextBlob/pysentimiento scores are from v2 re-evaluation on n=1700 clean test; SentiLexM/MELex/SVM also n=1700"
+    },
+    "tweet_eval": {
+      "language": "EN",
+      "n_test": 12284,
+      "description": "SemEval-2017 Task 4"
+    },
+    "duck_cs": {
+      "language": "MY-EN",
+      "n_test": 444,
+      "description": "dUCk CS subset"
+    }
+  },
+  "results": {
+    "VADER": {
+      "mesocsentiment": 0.3827,
+      "tweet_eval": {
+        "macro_f1": 0.5262,
+        "neg_f1": 0.5751,
+        "neu_f1": 0.5428,
+        "pos_f1": 0.4606
+      },
+      "duck_cs": {
+        "macro_f1": 0.3511,
+        "neg_f1": 0.3421,
+        "neu_f1": 0.3642,
+        "pos_f1": 0.3469
+      }
+    },
+    "TextBlob": {
+      "mesocsentiment": 0.3747,
+      "tweet_eval": {
+        "macro_f1": 0.4667,
+        "neg_f1": 0.3685,
+        "neu_f1": 0.5971,
+        "pos_f1": 0.4344
+      },
+      "duck_cs": {
+        "macro_f1": 0.3373,
+        "neg_f1": 0.2977,
+        "neu_f1": 0.4178,
+        "pos_f1": 0.2963
+      }
+    },
+    "pysentimiento": {
+      "mesocsentiment": 0.4778,
+      "tweet_eval": {
+        "macro_f1": 0.7188,
+        "neg_f1": 0.748,
+        "neu_f1": 0.7032,
+        "pos_f1": 0.7053
+      },
+      "duck_cs": {
+        "macro_f1": 0.3846,
+        "neg_f1": 0.4521,
+        "neu_f1": 0.4424,
+        "pos_f1": 0.2593
+      }
+    },
+    "SentiLexM": {
+      "mesocsentiment": 0.4053,
+      "tweet_eval": {
+        "macro_f1": 0.5222,
+        "neg_f1": 0.5301,
+        "neu_f1": 0.5845,
+        "pos_f1": 0.4521
+      },
+      "duck_cs": {
+        "macro_f1": 0.3952,
+        "neg_f1": 0.5172,
+        "neu_f1": 0.3232,
+        "pos_f1": 0.3451
+      }
+    },
+    "MELex": {
+      "mesocsentiment": 0.2811,
+      "tweet_eval": {
+        "macro_f1": 0.3623,
+        "neg_f1": 0.2708,
+        "neu_f1": 0.4766,
+        "pos_f1": 0.3394
+      },
+      "duck_cs": {
+        "macro_f1": 0.318,
+        "neg_f1": 0.3061,
+        "neu_f1": 0.2247,
+        "pos_f1": 0.4231
+      }
+    },
+    "TF-IDF + SVM": {
+      "mesocsentiment": 0.6407,
+      "tweet_eval": {
+        "macro_f1": 0.4592,
+        "neg_f1": 0.3876,
+        "neu_f1": 0.606,
+        "pos_f1": 0.384
+      },
+      "duck_cs": {
+        "macro_f1": 0.3971,
+        "neg_f1": 0.5543,
+        "neu_f1": 0.283,
+        "pos_f1": 0.3539
+      }
+    }
+  }
+}

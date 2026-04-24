@@ -1,0 +1,15 @@
+key,model,tier,macro_f1,neg_f1,neu_f1,pos_f1,neg_p,neg_r,neu_p,neu_r,pos_p,pos_r
+vader,VADER,Lexicon,0.3827,0.1014,0.7263,0.3205,0.208,0.067,0.7441,0.7092,0.2256,0.5531
+textblob,TextBlob,Lexicon,0.3747,0.0922,0.7551,0.2767,0.2472,0.0567,0.733,0.7785,0.2096,0.4071
+pysentimiento_en,pysentimiento (en),Lexicon,0.4778,0.133,0.8324,0.468,0.6042,0.0747,0.7334,0.9625,0.6316,0.3717
+sentilexm,SentiLexM (bilingual),Lexicon,0.4053,0.355,0.549,0.3118,0.3211,0.397,0.7977,0.4185,0.2003,0.7031
+melex,MELex (bilingual),Lexicon,0.2811,0.2131,0.4117,0.2186,0.2321,0.197,0.7342,0.2861,0.1311,0.6562
+svm,TF-IDF + SVM (LinearSVC),Classical ML,0.6407,0.6317,0.8209,0.4696,0.5665,0.7139,0.8619,0.7835,0.4462,0.4956
+xlm_r,XLM-R,Transformer,0.6587,0.6266,0.7796,0.5697,0.5125,0.8061,0.9213,0.6757,0.4574,0.7552
+xlm_r_weighted,XLM-R (class-weighted),Transformer,0.6677,0.6267,0.8309,0.5455,0.5967,0.6598,0.8692,0.7958,0.4768,0.6372
+xlm_r_focal_g1,XLM-R (Focal γ=1.0),Transformer,0.6841,0.6413,0.8155,0.5956,0.5393,0.7909,0.9092,0.7394,0.5194,0.6979
+xlm_r_focal_g2,XLM-R (Focal γ=2.0),Transformer,0.6792,0.638,0.8091,0.5905,0.5361,0.7879,0.9099,0.7284,0.5037,0.7135
+mdeberta,mDeBERTa-v3,Transformer,0.6223,0.6152,0.7908,0.4609,0.5347,0.7242,0.8811,0.7173,0.381,0.5833
+xlm_r_denoised,XLM-R v2 Denoised (Phase 3 v2),Transformer,0.6305,0.63,0.75,0.52,0.52,0.79,0.93,0.62,0.38,0.81
+xlm_t,XLM-T,Transformer,0.6782,0.6326,0.795,0.6071,0.5205,0.8061,0.9178,0.7012,0.5052,0.7604
+claude_sonnet,Claude Sonnet 4.6 (few-shot),LLM (few-shot),0.6,0.5609,0.7265,0.5125,0.5442,0.5788,0.8596,0.629,0.3573,0.9062

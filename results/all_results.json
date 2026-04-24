@@ -1,0 +1,573 @@
+[
+  {
+    "model": "VADER",
+    "type": "lexicon",
+    "macro_f1": 0.3827,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.208,
+        "recall": 0.067,
+        "f1": 0.1014
+      },
+      "NEUTRAL": {
+        "precision": 0.7441,
+        "recall": 0.7092,
+        "f1": 0.7263
+      },
+      "POSITIVE": {
+        "precision": 0.2256,
+        "recall": 0.5531,
+        "f1": 0.3205
+      }
+    },
+    "tier": "Lexicon",
+    "key": "vader",
+    "test_n": 2000
+  },
+  {
+    "model": "TextBlob",
+    "type": "lexicon",
+    "macro_f1": 0.3747,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.2472,
+        "recall": 0.0567,
+        "f1": 0.0922
+      },
+      "NEUTRAL": {
+        "precision": 0.733,
+        "recall": 0.7785,
+        "f1": 0.7551
+      },
+      "POSITIVE": {
+        "precision": 0.2096,
+        "recall": 0.4071,
+        "f1": 0.2767
+      }
+    },
+    "tier": "Lexicon",
+    "key": "textblob",
+    "test_n": 2000
+  },
+  {
+    "model": "pysentimiento (en)",
+    "type": "lexicon",
+    "macro_f1": 0.4778,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.6042,
+        "recall": 0.0747,
+        "f1": 0.133
+      },
+      "NEUTRAL": {
+        "precision": 0.7334,
+        "recall": 0.9625,
+        "f1": 0.8324
+      },
+      "POSITIVE": {
+        "precision": 0.6316,
+        "recall": 0.3717,
+        "f1": 0.468
+      }
+    },
+    "tier": "Lexicon",
+    "key": "pysentimiento_en",
+    "test_n": 2000
+  },
+  {
+    "model": "SentiLexM (bilingual)",
+    "type": "bilingual_lexicon",
+    "macro_f1": 0.4053,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.3211,
+        "recall": 0.397,
+        "f1": 0.355
+      },
+      "NEUTRAL": {
+        "precision": 0.7977,
+        "recall": 0.4185,
+        "f1": 0.549
+      },
+      "POSITIVE": {
+        "precision": 0.2003,
+        "recall": 0.7031,
+        "f1": 0.3118
+      }
+    },
+    "tier": "Lexicon",
+    "key": "sentilexm",
+    "test_n": 1700,
+    "note": "26K-entry bilingual Malay-English lexicon (AFINN-based, MIT licence, general social-media domain)"
+  },
+  {
+    "model": "MELex (bilingual)",
+    "type": "bilingual_lexicon",
+    "macro_f1": 0.2811,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.2321,
+        "recall": 0.197,
+        "f1": 0.2131
+      },
+      "NEUTRAL": {
+        "precision": 0.7342,
+        "recall": 0.2861,
+        "f1": 0.4117
+      },
+      "POSITIVE": {
+        "precision": 0.1311,
+        "recall": 0.6562,
+        "f1": 0.2186
+      }
+    },
+    "tier": "Lexicon",
+    "key": "melex",
+    "test_n": 1700,
+    "note": "6K-entry bilingual lexicon built from property-sector Malaysian tweets â€” domain mismatch expected"
+  },
+  {
+    "model": "TF-IDF + SVM (LinearSVC)",
+    "macro_f1": 0.6407,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.5665,
+        "recall": 0.7139,
+        "f1": 0.6317
+      },
+      "NEUTRAL": {
+        "precision": 0.8619,
+        "recall": 0.7835,
+        "f1": 0.8209
+      },
+      "POSITIVE": {
+        "precision": 0.4462,
+        "recall": 0.4956,
+        "f1": 0.4696
+      }
+    },
+    "tier": "Classical ML",
+    "key": "svm",
+    "test_n": 1700,
+    "note": "v2 result evaluated on 1,700-sample clean test set; v1 result on n=2,000 was 0.6504"
+  },
+  {
+    "model": "XLM-R",
+    "checkpoint": "xlm-roberta-base",
+    "macro_f1": 0.6587,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.5125,
+        "recall": 0.8061,
+        "f1": 0.6266
+      },
+      "NEUTRAL": {
+        "precision": 0.9213,
+        "recall": 0.6757,
+        "f1": 0.7796
+      },
+      "POSITIVE": {
+        "precision": 0.4574,
+        "recall": 0.7552,
+        "f1": 0.5697
+      }
+    },
+    "tier": "Transformer",
+    "key": "xlm_r",
+    "test_n": 1700
+  },
+  {
+    "model": "XLM-R (class-weighted)",
+    "checkpoint": "xlm-roberta-base",
+    "macro_f1": 0.6677,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.5967,
+        "recall": 0.6598,
+        "f1": 0.6267
+      },
+      "NEUTRAL": {
+        "precision": 0.8692,
+        "recall": 0.7958,
+        "f1": 0.8309
+      },
+      "POSITIVE": {
+        "precision": 0.4768,
+        "recall": 0.6372,
+        "f1": 0.5455
+      }
+    },
+    "tier": "Transformer",
+    "key": "xlm_r_weighted",
+    "test_n": 2000,
+    "note": "v1 test-set ablation; class weighting had negligible effect"
+  },
+  {
+    "model": "XLM-R (Focal γ=1.0)",
+    "checkpoint": "xlm-roberta-base",
+    "macro_f1": 0.6841,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.5393,
+        "recall": 0.7909,
+        "f1": 0.6413
+      },
+      "NEUTRAL": {
+        "precision": 0.9092,
+        "recall": 0.7394,
+        "f1": 0.8155
+      },
+      "POSITIVE": {
+        "precision": 0.5194,
+        "recall": 0.6979,
+        "f1": 0.5956
+      }
+    },
+    "tier": "Transformer",
+    "key": "xlm_r_focal_g1",
+    "test_n": 1700
+  },
+  {
+    "model": "XLM-R (Focal γ=2.0)",
+    "checkpoint": "xlm-roberta-base",
+    "macro_f1": 0.6792,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.5361,
+        "recall": 0.7879,
+        "f1": 0.638
+      },
+      "NEUTRAL": {
+        "precision": 0.9099,
+        "recall": 0.7284,
+        "f1": 0.8091
+      },
+      "POSITIVE": {
+        "precision": 0.5037,
+        "recall": 0.7135,
+        "f1": 0.5905
+      }
+    },
+    "tier": "Transformer",
+    "key": "xlm_r_focal_g2",
+    "test_n": 1700
+  },
+  {
+    "model": "mDeBERTa-v3",
+    "checkpoint": "microsoft/mdeberta-v3-base",
+    "macro_f1": 0.6223,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.5347,
+        "recall": 0.7242,
+        "f1": 0.6152
+      },
+      "NEUTRAL": {
+        "precision": 0.8811,
+        "recall": 0.7173,
+        "f1": 0.7908
+      },
+      "POSITIVE": {
+        "precision": 0.381,
+        "recall": 0.5833,
+        "f1": 0.4609
+      }
+    },
+    "tier": "Transformer",
+    "key": "mdeberta",
+    "test_n": 1700
+  },
+  {
+    "model": "XLM-R v2 Denoised (Phase 3 v2)",
+    "checkpoint": "xlm-roberta-base",
+    "macro_f1": 0.6305,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.52,
+        "recall": 0.79,
+        "f1": 0.63
+      },
+      "NEUTRAL": {
+        "precision": 0.93,
+        "recall": 0.62,
+        "f1": 0.75
+      },
+      "POSITIVE": {
+        "precision": 0.38,
+        "recall": 0.81,
+        "f1": 0.52
+      }
+    },
+    "tier": "Transformer",
+    "key": "xlm_r_denoised",
+    "test_n": 1700,
+    "note": "Phase 3 v2: 1500 high-entropy samples relabelled by claude-sonnet-4-6 (30.6% label changes); denoising did not improve over XLM-R v2 baseline (Δ=-0.0282)"
+  },
+  {
+    "model": "XLM-T",
+    "checkpoint": "cardiffnlp/twitter-xlm-roberta-base-sentiment",
+    "macro_f1": 0.6782,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.5205,
+        "recall": 0.8061,
+        "f1": 0.6326
+      },
+      "NEUTRAL": {
+        "precision": 0.9178,
+        "recall": 0.7012,
+        "f1": 0.795
+      },
+      "POSITIVE": {
+        "precision": 0.5052,
+        "recall": 0.7604,
+        "f1": 0.6071
+      }
+    },
+    "tier": "Transformer",
+    "key": "xlm_t",
+    "test_n": 1700
+  },
+  {
+    "model": "Claude Sonnet 4.6 (few-shot)",
+    "type": "llm",
+    "macro_f1": 0.6,
+    "per_class": {
+      "NEGATIVE": {
+        "precision": 0.5442,
+        "recall": 0.5788,
+        "f1": 0.5609
+      },
+      "NEUTRAL": {
+        "precision": 0.8596,
+        "recall": 0.629,
+        "f1": 0.7265
+      },
+      "POSITIVE": {
+        "precision": 0.3573,
+        "recall": 0.9062,
+        "f1": 0.5125
+      }
+    },
+    "tier": "LLM (few-shot)",
+    "key": "claude_sonnet",
+    "test_n": 1700,
+    "note": "30-shot prompt identical to Phase 3 denoising. Benchmarks annotator quality â€” if LLM F1 < fine-tuned baseline, LLM corrections explain Phase 3 null result."
+  },
+  {
+    "model": "VADER",
+    "corpus": "tweet_eval",
+    "tier": "Lexicon",
+    "macro_f1": 0.5262,
+    "per_class": {
+      "NEGATIVE": {
+        "f1": 0.5751
+      },
+      "NEUTRAL": {
+        "f1": 0.5428
+      },
+      "POSITIVE": {
+        "f1": 0.4606
+      }
+    },
+    "test_n": 12284
+  },
+  {
+    "model": "VADER",
+    "corpus": "duck_cs",
+    "tier": "Lexicon",
+    "macro_f1": 0.3511,
+    "per_class": {
+      "NEGATIVE": {
+        "f1": 0.3421
+      },
+      "NEUTRAL": {
+        "f1": 0.3642
+      },
+      "POSITIVE": {
+        "f1": 0.3469
+      }
+    },
+    "test_n": 444
+  },
+  {
+    "model": "TextBlob",
+    "corpus": "tweet_eval",
+    "tier": "Lexicon",
+    "macro_f1": 0.4667,
+    "per_class": {
+      "NEGATIVE": {
+        "f1": 0.3685
+      },
+      "NEUTRAL": {
+        "f1": 0.5971
+      },
+      "POSITIVE": {
+        "f1": 0.4344
+      }
+    },
+    "test_n": 12284
+  },
+  {
+    "model": "TextBlob",
+    "corpus": "duck_cs",
+    "tier": "Lexicon",
+    "macro_f1": 0.3373,
+    "per_class": {
+      "NEGATIVE": {
+        "f1": 0.2977
+      },
+      "NEUTRAL": {
+        "f1": 0.4178
+      },
+      "POSITIVE": {
+        "f1": 0.2963
+      }
+    },
+    "test_n": 444
+  },
+  {
+    "model": "pysentimiento",
+    "corpus": "tweet_eval",
+    "tier": "Lexicon",
+    "macro_f1": 0.7188,
+    "per_class": {
+      "NEGATIVE": {
+        "f1": 0.748
+      },
+      "NEUTRAL": {
+        "f1": 0.7032
+      },
+      "POSITIVE": {
+        "f1": 0.7053
+      }
+    },
+    "test_n": 12284
+  },
+  {
+    "model": "pysentimiento",
+    "corpus": "duck_cs",
+    "tier": "Lexicon",
+    "macro_f1": 0.3846,
+    "per_class": {
+      "NEGATIVE": {
+        "f1": 0.4521
+      },
+      "NEUTRAL": {
+        "f1": 0.4424
+      },
+      "POSITIVE": {
+        "f1": 0.2593
+      }
+    },
+    "test_n": 444
+  },
+  {
+    "model": "SentiLexM",
+    "corpus": "tweet_eval",
+    "tier": "Lexicon",
+    "macro_f1": 0.5222,
+    "per_class": {
+      "NEGATIVE": {
+        "f1": 0.5301
+      },
+      "NEUTRAL": {
+        "f1": 0.5845
+      },
+      "POSITIVE": {
+        "f1": 0.4521
+      }
+    },
+    "test_n": 12284
+  },
+  {
+    "model": "SentiLexM",
+    "corpus": "duck_cs",
+    "tier": "Lexicon",
+    "macro_f1": 0.3952,
+    "per_class": {
+      "NEGATIVE": {
+        "f1": 0.5172
+      },
+      "NEUTRAL": {
+        "f1": 0.3232
+      },
+      "POSITIVE": {
+        "f1": 0.3451
+      }
+    },
+    "test_n": 444
+  },
+  {
+    "model": "MELex",
+    "corpus": "tweet_eval",
+    "tier": "Lexicon",
+    "macro_f1": 0.3623,
+    "per_class": {
+      "NEGATIVE": {
+        "f1": 0.2708
+      },
+      "NEUTRAL": {
+        "f1": 0.4766
+      },
+      "POSITIVE": {
+        "f1": 0.3394
+      }
+    },
+    "test_n": 12284
+  },
+  {
+    "model": "MELex",
+    "corpus": "duck_cs",
+    "tier": "Lexicon",
+    "macro_f1": 0.318,
+    "per_class": {
+      "NEGATIVE": {
+        "f1": 0.3061
+      },
+      "NEUTRAL": {
+        "f1": 0.2247
+      },
+      "POSITIVE": {
+        "f1": 0.4231
+      }
+    },
+    "test_n": 444
+  },
+  {
+    "model": "TF-IDF + SVM",
+    "corpus": "tweet_eval",
+    "tier": "Classical ML",
+    "macro_f1": 0.4592,
+    "per_class": {
+      "NEGATIVE": {
+        "f1": 0.3876
+      },
+      "NEUTRAL": {
+        "f1": 0.606
+      },
+      "POSITIVE": {
+        "f1": 0.384
+      }
+    },
+    "test_n": 12284
+  },
+  {
+    "model": "TF-IDF + SVM",
+    "corpus": "duck_cs",
+    "tier": "Classical ML",
+    "macro_f1": 0.3971,
+    "per_class": {
+      "NEGATIVE": {
+        "f1": 0.5543
+      },
+      "NEUTRAL": {
+        "f1": 0.283
+      },
+      "POSITIVE": {
+        "f1": 0.3539
+      }
+    },
+    "test_n": 444
+  }
+]

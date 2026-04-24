@@ -1,0 +1,93 @@
+{
+  "lexicon": {
+    "vader": 0.3827,
+    "textblob": 0.3747,
+    "pysentimiento": 0.4778,
+    "sentilexm": 0.4053,
+    "melex": 0.2811,
+    "best": 0.4778
+  },
+  "classical_ml": {
+    "svm": 0.6407
+  },
+  "transformer": {
+    "xlm_r": 0.6587,
+    "xlm_r_weighted": 0.6677,
+    "xlm_r_focal_g1": 0.6841,
+    "xlm_r_focal_g2": 0.6792,
+    "mdeberta": 0.6223,
+    "xlm_t": 0.6782,
+    "xlm_r_denoised": 0.6305,
+    "best": 0.6841
+  },
+  "xlm_r_multiseed": {
+    "seeds": [
+      42,
+      123,
+      456
+    ],
+    "per_seed": [
+      0.6545,
+      0.667,
+      0.6696
+    ],
+    "mean_macro_f1": 0.6637,
+    "std_macro_f1": 0.0081,
+    "ci_95_lower": 0.6436,
+    "ci_95_upper": 0.6838,
+    "ci_method": "t-distribution df=2 t=4.303 sample-std (n-1=2)"
+  },
+  "focal_multiseed": {
+    "seeds": [
+      42,
+      123,
+      456
+    ],
+    "per_seed": [
+      0.6734,
+      0.6724,
+      0.6787
+    ],
+    "mean_macro_f1": 0.6748,
+    "std_macro_f1": 0.0034,
+    "ci_95_lower": 0.6664,
+    "ci_95_upper": 0.6832,
+    "ci_method": "t-distribution df=2 t=4.303 sample-std (n-1=2)",
+    "training_set": "train_split.csv (n=8,915) — matched to focal_loss.ipynb single-run peak; re-run completed 2026-04-23"
+  },
+  "llm_benchmark": {
+    "model": "claude-sonnet-4-6",
+    "eval_type": "few-shot (30 examples — identical to Phase 3 denoising prompt)",
+    "macro_f1": 0.6,
+    "delta_vs_xlmr_baseline": -0.0587,
+    "delta_vs_focal_best": -0.0841,
+    "per_class": {
+      "NEGATIVE": 0.5609,
+      "NEUTRAL": 0.7265,
+      "POSITIVE": 0.5125
+    }
+  },
+  "key_gaps": {
+    "lexicon_to_svm": 0.1629,
+    "svm_to_xlmr": 0.018,
+    "xlmr_to_xlmt": 0.0195,
+    "lexicon_to_xlmt": 0.2004,
+    "xlmr_weighted_delta": 0.009,
+    "focal_g1_over_standard": 0.0254,
+    "focal_g2_over_standard": 0.0205,
+    "sentilexm_over_english": -0.0725,
+    "melex_domain_penalty": -0.1967,
+    "denoising_delta": -0.0282,
+    "focal_ci_lower_vs_svm": 0.0257,
+    "focal_mean_vs_xlmr_std_mean": 0.0111,
+    "llm_vs_xlmr_baseline": -0.0587,
+    "llm_vs_focal_best": -0.0841,
+    "xlmr_weighted_delta_note": "n=2000 weighted vs n=1700 v2 baseline — NOT a valid direct comparison; v1 delta (both n=2000) = -0.0009"
+  },
+  "label_noise_rate": 0.338,
+  "hardest_class": "POSITIVE",
+  "best_overall": {
+    "model": "XLM-R (Focal γ=1.0)",
+    "macro_f1": 0.6841
+  }
+}

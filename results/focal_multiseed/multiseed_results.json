@@ -1,0 +1,79 @@
+{
+  "model": "XLM-R (Focal \u03b3=1.0)",
+  "gamma": 1.0,
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "per_seed_results": [
+    {
+      "seed": 42,
+      "macro_f1": 0.6734,
+      "per_class": {
+        "NEGATIVE": {
+          "precision": 0.6523,
+          "recall": 0.6424,
+          "f1-score": 0.6473
+        },
+        "NEUTRAL": {
+          "precision": 0.8684,
+          "recall": 0.8124,
+          "f1-score": 0.8395
+        },
+        "POSITIVE": {
+          "precision": 0.4542,
+          "recall": 0.6458,
+          "f1-score": 0.5333
+        }
+      }
+    },
+    {
+      "seed": 123,
+      "macro_f1": 0.6724,
+      "per_class": {
+        "NEGATIVE": {
+          "precision": 0.5657,
+          "recall": 0.7697,
+          "f1-score": 0.6521
+        },
+        "NEUTRAL": {
+          "precision": 0.9048,
+          "recall": 0.7343,
+          "f1-score": 0.8107
+        },
+        "POSITIVE": {
+          "precision": 0.4576,
+          "recall": 0.7031,
+          "f1-score": 0.5544
+        }
+      }
+    },
+    {
+      "seed": 456,
+      "macro_f1": 0.6787,
+      "per_class": {
+        "NEGATIVE": {
+          "precision": 0.5455,
+          "recall": 0.8,
+          "f1-score": 0.6486
+        },
+        "NEUTRAL": {
+          "precision": 0.9065,
+          "recall": 0.7241,
+          "f1-score": 0.8051
+        },
+        "POSITIVE": {
+          "precision": 0.4945,
+          "recall": 0.7083,
+          "f1-score": 0.5824
+        }
+      }
+    }
+  ],
+  "mean_macro_f1": 0.6748,
+  "std_macro_f1": 0.0034,
+  "ci_95_lower": 0.6664,
+  "ci_95_upper": 0.6832,
+  "ci_note": "95% CI via t-distribution (df=2, t=4.303); SE=std/sqrt(3)"
+}
