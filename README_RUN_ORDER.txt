@@ -1,16 +1,33 @@
+QUICK START
+-----------
+  1. cd into this repository root
+  2. pip install -r requirements.txt
+  3. jupyter notebook  (or jupyter lab)
+  4. Open notebooks/ and run in numbered order
+
+  Public results are pre-populated. Raw datasets and the generated SQLite
+  database are not redistributed in this public repository.
+
+  Requires internet for:  tweet_eval download (notebook 01d, HuggingFace automatic)
+                          transformer checkpoints (~1-3 GB each, notebooks 02+)
+  Requires GPU for:       notebooks 02, 02_focal_loss, 02_focal_multiseed, 04
+  Requires API key for:   notebooks 04, 05
+                          (set env var: export ANTHROPIC_API_KEY=<your key>)
+
 ================================================================================
   SUBMISSION PACKAGE — Malay-English Sentiment Analysis Benchmarking
   Joshua Joenathan Thomas (25141571) | Amit Kumar Gupta (25109952)
   Module: Programming for AI | NCI | April 2026
 ================================================================================
 
-FOLDER CONTENTS
----------------
-1_Report/
-  Report_Thomas_Gupta.docx     - Final IEEE-format report (all critic fixes applied)
+PUBLIC REPOSITORY CONTENTS
+--------------------------
+report/
+  Programming_in_AI.pdf         - Final report
+  Report_Thomas_Gupta.docx      - Editable report copy, if present
   Presentation_Script.md        - Slide-by-slide speaker notes for 10-minute video
 
-2_Notebooks/                    - Run in the numbered order below
+notebooks/                      - Run in the numbered order below
   01_data_pipeline_and_svm.ipynb
   01b_lexicon_baselines.ipynb
   01c_bilingual_lexicon.ipynb
@@ -22,16 +39,15 @@ FOLDER CONTENTS
   04_llm_denoising_v2.ipynb
   05_llm_benchmark.ipynb
 
-3_Source/
+src/
   config.py          - Single source of truth for all paths and hyperparameters
-  requirements.txt   - Python dependencies
-  fix_report.py      - Report repair script (audited + applied 20 critic fixes)
 
-4_Results/
+requirements.txt     - Python dependencies
+
+results/
   all_results.json              - Ground-truth results for all 13 model configs
   analysis_summary.json         - CI values, std, and key statistics
   results_table.csv             - Human-readable results table
-  mesocsentiment.db             - SQLite database (5 datasets, 14 tables)
   macro_f1_comparison.png       - Overall Macro-F1 bar chart
   per_class_f1_comparison.png   - Per-class F1 heatmap
   training_curves.png           - Transformer training/validation curves
@@ -41,15 +57,10 @@ FOLDER CONTENTS
     duck_eda.png                - dUCk dataset EDA
     teval_eda.png               - tweet_eval EDA
 
-5_Journals/
-  Journal_Joshua_Thomas_25141571.docx
-  Journal_Amit_Gupta_25109952.docx
-
-
 EXECUTION ORDER (MANDATORY)
 ----------------------------
 Notebooks must be run in this exact sequence. Each notebook populates the
-SQLite database and/or saves artefacts that later notebooks depend on.
+SQLite database locally and/or saves artefacts that later notebooks depend on.
 
   Step 1: 01_data_pipeline_and_svm.ipynb
           Creates SQLite DB, loads MESocSentiment, runs TF-IDF+SVM.
@@ -107,8 +118,9 @@ SQLite database and/or saves artefacts that later notebooks depend on.
 
 KEY RESULTS SUMMARY
 --------------------
-  Best model:        XLM-R (Focal gamma=1.0)  Macro-F1 = 0.6841 (single run)
-                                                Mean = 0.6748; 95% CI [0.6664, 0.6832]
+  Best robust model: XLM-R (Focal gamma=1.0)  Mean Macro-F1 = 0.6748
+                                                95% CI [0.6664, 0.6832]
+                                                Best single run = 0.6841
   TF-IDF + SVM:                               Macro-F1 = 0.6407
   Best zero-shot:    pysentimiento             Macro-F1 = 0.4778
   Gap (zero->SVM):                            +0.1629 (34.1% relative gain)
@@ -125,7 +137,7 @@ KEY RESULTS SUMMARY
 ENVIRONMENT SETUP
 ------------------
   Python 3.10+
-  pip install -r 3_Source/requirements.txt
+  pip install -r requirements.txt
 
   Environment variables needed for Phase 3 / LLM notebooks:
     ANTHROPIC_API_KEY = <your key>
@@ -139,7 +151,6 @@ ENVIRONMENT SETUP
 ARTEFACT AUDIT
 ---------------
   All numerical results in the report were verified against all_results.json
-  and analysis_summary.json using fix_report.py.
-  20 fixes were applied to the report in one audit pass (see fix_report.py).
+  and analysis_summary.json before publication.
 
 ================================================================================
