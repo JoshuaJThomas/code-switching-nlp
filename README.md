@@ -1,47 +1,63 @@
-# Code-Switching NLP
+# Code-Switching NLP: Malay-English Sentiment Analysis
 
-Joint research project (Thomas & Gupta) exploring code-switching language detection and sentiment analysis using multiple ML approaches — from classical baselines through to transformer fine-tuning and LLM benchmarking.
+Sentiment analysis on Malay-English code-switched social media text. The model has to handle mid-sentence language switches, noisy tweet-style writing, and roughly 34% label noise in the data — which makes even the baselines harder than they look.
 
-## Overview
+We ran through everything: lexicon tools, SVM, fine-tuned transformers with focal loss, then tested whether an LLM could skip the fine-tuning entirely. It couldn't.
 
-Code-switching — alternating between languages mid-sentence — is a major challenge for NLP systems. This project benchmarks a progression of approaches:
+## What we found
 
-1. **Data pipeline + SVM** — baseline classical classifier
-2. **Bilingual lexicon** — lexicon-based baseline
-3. **Focal loss transformer** — fine-tuned transformer with focal loss to handle class imbalance
-4. **Multi-seed evaluation** — robustness testing across seeds
-5. **Cross-corpus evaluation** — generalisation across datasets
-6. **LLM denoising** — using LLMs to clean noisy code-switched text
-7. **LLM benchmarking** — comparing LLM zero-shot performance
+| Approach | Macro F1 |
+|---|---|
+| Lexicon best (pysentimiento) | 0.478 |
+| SVM | 0.641 |
+| XLM-R baseline | 0.659 |
+| XLM-R + focal loss (γ=1.0) | **0.684** |
+| Claude Sonnet few-shot | 0.600 |
 
-## Tech Stack
-- Python 3.x
-- Transformers (HuggingFace)
-- Scikit-learn
-- PyTorch (focal loss)
-- Pandas / NumPy
-- Matplotlib
+The jump from lexicons to SVM (+0.16) was bigger than the jump from SVM to a fine-tuned transformer (+0.02). Focal loss helped most with the POSITIVE class, which was consistently the hardest to classify across every approach.
 
-## Structure
+LLM denoising turned out to be a mild negative — pre-processing with Claude to clean noisy text before training dropped F1 by 0.028. The transformer had apparently learned to use the code-switching noise as signal. Cross-corpus evaluation on dUCk and TweetEval showed the models generalise reasonably across datasets.
+
+Multi-seed runs (seeds 42, 123, 456) confirmed the focal loss results hold up: mean macro F1 0.675 ± 0.003.
+
+## Datasets
+
+- **MESocSentiment** — Malay-English code-switched social media posts, 3-class sentiment
+- **dUCk** — annotated code-switching tweet subset (~444 test instances)
+
+Both are in `Datasets/`. The `results/mesocsentiment.db` is a SQLite cache of intermediate model outputs used in the analysis notebook.
+
+## Notebooks
+
+Run in order — see `README_RUN_ORDER.txt` for the exact sequence.
+
 ```
-notebooks/     # All experiment notebooks (run in order — see README_RUN_ORDER.txt)
-src/           # Config and shared utilities
-results/       # F1 charts, training curves, cross-corpus results, JSON metrics
-report/        # Joint research paper (docx) + presentation script
-requirements.txt
-README_RUN_ORDER.txt
+01_data_pipeline_and_svm.ipynb      — data pipeline + SVM baseline
+01b_lexicon_baselines.ipynb         — VADER, TextBlob, pysentimiento, SentiLexM, MELex
+01c_bilingual_lexicon.ipynb         — bilingual lexicon approach
+01d_cross_corpus_eval.ipynb         — evaluation across MESocSentiment, dUCk, TweetEval
+02_focal_loss.ipynb                 — XLM-R with focal loss
+02_focal_multiseed.ipynb            — multi-seed robustness check
+02_transformer_v2.ipynb             — XLM-R, mDeBERTa, XLM-T comparisons
+03_results_analysis.ipynb           — all plots and tables
+04_llm_denoising_v2.ipynb           — LLM-based text denoising pre-processing
+05_llm_benchmark.ipynb              — Claude Sonnet few-shot evaluation
 ```
 
-## Results
-See `results/` for macro F1 comparisons, per-class F1, training curves, and cross-corpus evaluation plots.
+## Stack
 
-## Run
+Python 3, HuggingFace Transformers, PyTorch, scikit-learn, pandas, matplotlib
+
 ```bash
 pip install -r requirements.txt
-# See README_RUN_ORDER.txt for notebook execution order
 jupyter notebook notebooks/
 ```
 
+## Report
+
+`report/Programming_in_AI.pdf` — full write-up with methodology, results tables, and analysis.
+
 ---
-MSc Artificial Intelligence — NCI Dublin, 2025
-Joint work: Joshua Thomas & Amit Gupta
+
+MSc Artificial Intelligence, NCI Dublin 2025  
+Joshua Thomas & Amit Gupta
